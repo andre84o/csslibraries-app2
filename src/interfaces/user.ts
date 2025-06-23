@@ -1,16 +1,18 @@
 export interface RandomUser {
+  login: {
+    uuid: string;
+  };
   name: {
     first: string;
     last: string;
   };
   cell: string;
   email: string;
-  registered: string;
-  age: string;
   location: {
     country: string;
   };
   picture: {
     large: string;
+    thumbnail: string;
   };
 }

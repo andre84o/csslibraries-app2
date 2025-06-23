@@ -6,6 +6,13 @@
 
 }
 
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 15%;
+}
+
 .centerContainer {
   display: flex;
   justify-content: center;

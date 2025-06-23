@@ -21,7 +21,7 @@ $border-radius: 12px;
 .card {
   background-color: $card-bg;
   padding: 20px;
-  max-width: 400px;
+  min-width: 400px;
   margin: 50px auto;
   border-radius: $border-radius;
   box-shadow: $shadow;
@@ -35,4 +35,102 @@ $border-radius: 12px;
 
 .button {
   @include button-style;
+}
+
+.profileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 40px;
+  margin-left: 5%;
+}
+
+.savedColumn {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.savedCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.savedCard:hover {
+  background-color: #f0f8ff;
+}
+
+.savedCard img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.savedText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.savedCard:hover {
+  background-color: #6d8fa8;
+}
+
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.popup {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  position: relative;
+}
+
+.popupImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  object-fit: cover;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.SaveProfile {
+  color: white;
 }
