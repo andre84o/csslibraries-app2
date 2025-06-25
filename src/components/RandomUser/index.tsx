@@ -24,9 +24,16 @@ export default function RandomUserComponent() {
 
     setSavedUsers(prev => {
       const alreadySaved = prev.some(u => u.login.uuid === user.login.uuid);
+
       if (alreadySaved) {
+        // Remove user if already saved
         return prev.filter(u => u.login.uuid !== user.login.uuid);
       } else {
+        if (prev.length >= 5) {
+          alert("You can only save up to 5 profiles.");
+          return prev;
+        }
+
         return [...prev, user];
       }
     });
@@ -40,14 +47,14 @@ export default function RandomUserComponent() {
 
   return (
     <div className={styles.profileWrapper}>
-      {/* Profilkort */}
+      {/* Profile card */}
       <div className={styles.card}>
         {user ? (
           <>
             <button
               onClick={toggleSaveUser}
               className={styles.starButton}
-              title={isSaved ? "Ta bort från sparade" : "Spara profil"}
+              title={isSaved ? "Remove from saved" : "Save profile"}
             >
               <FaStar color={isSaved ? '#FFD700' : '#ccc'} size={20} />
             </button>
@@ -67,11 +74,10 @@ export default function RandomUserComponent() {
         </button>
       </div>
 
-      {/* Sparade profiler */}
+      {/* Saved profiles */}
       <div className={styles.savedColumn}>
-        <h3 className={styles.SaveProfile}>Sparade profiler</h3>
         {savedUsers.length === 0 ? (
-          <p className={styles.SaveProfile}>Inga sparade profiler ännu.</p>
+          <p className={styles.SaveProfile}></p>
         ) : (
           savedUsers.map((u) => (
             <div
@@ -85,7 +91,7 @@ export default function RandomUserComponent() {
                   removeSingleUser(u.login.uuid);
                 }}
                 className={styles.removeButton}
-                title="Ta bort"
+                title="Remove"
               >
                 <IoClose />
               </button>
@@ -98,7 +104,7 @@ export default function RandomUserComponent() {
         )}
       </div>
 
-      {/* Popup för vald profil */}
+      {/* Popup for selected profile */}
       {selectedUser && (
         <div className={styles.popupOverlay}>
           <div className={styles.popup}>
